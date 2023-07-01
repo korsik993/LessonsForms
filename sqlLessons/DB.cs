@@ -11,5 +11,23 @@ namespace sqlLessons
     {
         MySqlConnection conn = new MySqlConnection(
             "server = localhost; port = 3306; username = root; password = root; database = testdb");
+
+        public void openConnection()
+        {
+            if (conn.State == System.Data.ConnectionState.Closed)
+                conn.Open();
+        }
+
+        public void closeConnection()
+        {
+            if (conn.State == System.Data.ConnectionState.Open)
+                conn.Close();
+        
+        }
+
+        public MySqlConnection getConn()
+        {
+            return conn;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -65,6 +66,30 @@ namespace sqlLessons
             lastPoint = new Point(e.X, e.Y);
         }
 
-        
+        private void buttonLogin_Click(object sender, EventArgs e)
+        {
+            String loginUser = LoginFill.Text;
+            String passUser = PassFill.Text;
+
+            DB db = new DB();
+
+            DataTable table = new DataTable();
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+            MySqlCommand comm = new MySqlCommand("SELECT * FROM users where Login = @UL and Password = @UP", db.getConn());
+
+            comm.Parameters.Add("@UL", MySqlDbType.VarChar).Value = loginUser;
+            comm.Parameters.Add("@UP", MySqlDbType.VarChar).Value = passUser;
+
+            adapter.SelectCommand = comm;
+            adapter.Fill(table);
+
+            if (table.Rows.Count > 0)
+                MessageBox.Show("Авторизация выполнена");
+            else
+                MessageBox.Show("Авторизация не выполнена");
+
+        }
     }
 }
