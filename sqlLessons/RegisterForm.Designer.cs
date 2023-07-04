@@ -100,6 +100,7 @@
             this.buttonRegister.TabIndex = 5;
             this.buttonRegister.Text = "Sign up";
             this.buttonRegister.UseVisualStyleBackColor = false;
+            this.buttonRegister.Click += new System.EventHandler(this.buttonRegister_Click);
             // 
             // PassFill
             // 
@@ -169,6 +170,8 @@
             this.closeButton.TabIndex = 1;
             this.closeButton.Text = "Х";
             this.closeButton.Click += new System.EventHandler(this.closeButton_Click);
+            this.closeButton.MouseEnter += new System.EventHandler(this.closeButton_MouseEnter);
+            this.closeButton.MouseLeave += new System.EventHandler(this.closeButton_MouseLeave);
             // 
             // label1
             // 

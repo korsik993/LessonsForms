@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -125,6 +126,90 @@ namespace sqlLessons
                 PassFill.UseSystemPasswordChar = false;
                 PassFill.Text = "Введите пароль";
                 PassFill.ForeColor = Color.Gray;
+            }
+        }
+
+        private void closeButton_MouseEnter(object sender, EventArgs e)
+        {
+            closeButton.ForeColor = Color.Red;
+        }
+
+        private void closeButton_MouseLeave(object sender, EventArgs e)
+        {
+            closeButton.ForeColor = Color.White;
+        }
+
+        private void buttonRegister_Click(object sender, EventArgs e)
+        {
+            if (UserName.Text == "Введите имя")
+            {
+                MessageBox.Show("Ошибка регистрации!");
+                return;
+            }
+            if (UserSurname.Text == "Введите фамилию")
+            {
+                MessageBox.Show("Ошибка регистрации!");
+                return;
+            }
+            if (LoginFill.Text == "Введите логин")
+            {
+                MessageBox.Show("Ошибка регистрации!");
+                return;
+            }
+            if (PassFill.Text == "Введите пароль")
+            {
+                MessageBox.Show("Ошибка регистрации!");
+                return;
+            }
+
+            if (IsUserExist())
+                return;
+
+            DB dB = new DB();
+            
+            MySqlCommand command = new MySqlCommand(
+                "INSERT INTO `users` (`Login`, `Password`, `Name`, `Surname`) VALUES (@login, @password, @name, @surname);", dB.getConn());
+            
+            command.Parameters.Add("@login", MySqlDbType.VarChar).Value = LoginFill.Text;
+            command.Parameters.Add("@password", MySqlDbType.VarChar).Value = PassFill.Text;
+            command.Parameters.Add("@name", MySqlDbType.VarChar).Value = UserName.Text;
+            command.Parameters.Add("@surname", MySqlDbType.VarChar).Value = UserSurname.Text;
+
+            dB.openConnection();
+
+            if (command.ExecuteNonQuery() == 1)
+                MessageBox.Show("Регистрация завершена");
+            else
+                MessageBox.Show("Ошибка регистрации!");
+
+            dB.closeConnection();
+        }
+
+        public Boolean IsUserExist()
+        {
+            
+            DB db = new DB();
+
+            DataTable table = new DataTable();
+
+            MySqlDataAdapter adapter = new MySqlDataAdapter();
+
+            MySqlCommand comm = new MySqlCommand("SELECT * FROM users where Login = @UL", db.getConn());
+
+            comm.Parameters.Add("@UL", MySqlDbType.VarChar).Value = LoginFill.Text;
+            
+
+            adapter.SelectCommand = comm;
+            adapter.Fill(table);
+
+            if (table.Rows.Count > 0)
+            {
+                MessageBox.Show("Введите другой логин");
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
     }
