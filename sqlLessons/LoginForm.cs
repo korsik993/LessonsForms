@@ -28,7 +28,7 @@ namespace sqlLessons
 
         private void closeButton_MouseEnter(object sender, EventArgs e)
         {
-            closeButton.ForeColor = Color.Black;
+            closeButton.ForeColor = Color.Red;
         }
 
         private void closeButton_MouseLeave(object sender, EventArgs e)
