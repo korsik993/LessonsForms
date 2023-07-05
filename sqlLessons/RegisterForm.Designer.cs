@@ -39,6 +39,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.closeButton = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.RegisterLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -48,6 +49,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(152)))), ((int)(((byte)(120)))));
+            this.panel1.Controls.Add(this.RegisterLabel);
             this.panel1.Controls.Add(this.UserSurname);
             this.panel1.Controls.Add(this.UserName);
             this.panel1.Controls.Add(this.buttonRegister);
@@ -188,6 +190,20 @@
             this.label1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label1_MouseDown);
             this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label1_MouseMove);
             // 
+            // RegisterLabel
+            // 
+            this.RegisterLabel.AutoSize = true;
+            this.RegisterLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.RegisterLabel.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RegisterLabel.Location = new System.Drawing.Point(676, 394);
+            this.RegisterLabel.Name = "RegisterLabel";
+            this.RegisterLabel.Size = new System.Drawing.Size(75, 26);
+            this.RegisterLabel.TabIndex = 7;
+            this.RegisterLabel.Text = "Sign in";
+            this.RegisterLabel.Click += new System.EventHandler(this.RegisterLabel_Click);
+            this.RegisterLabel.MouseEnter += new System.EventHandler(this.RegisterLabel_MouseEnter);
+            this.RegisterLabel.MouseLeave += new System.EventHandler(this.RegisterLabel_MouseLeave);
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -196,6 +212,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "RegisterForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RegisterForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -220,5 +237,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox UserSurname;
         private System.Windows.Forms.TextBox UserName;
+        private System.Windows.Forms.Label RegisterLabel;
     }
 }

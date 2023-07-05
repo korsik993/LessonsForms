@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.RegisterLabel = new System.Windows.Forms.Label();
             this.buttonLogin = new System.Windows.Forms.Button();
             this.PassFill = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -46,6 +47,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(152)))), ((int)(((byte)(120)))));
+            this.panel1.Controls.Add(this.RegisterLabel);
             this.panel1.Controls.Add(this.buttonLogin);
             this.panel1.Controls.Add(this.PassFill);
             this.panel1.Controls.Add(this.pictureBox2);
@@ -57,8 +59,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(443, 409);
             this.panel1.TabIndex = 0;
-            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
-            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            // 
+            // RegisterLabel
+            // 
+            this.RegisterLabel.AutoSize = true;
+            this.RegisterLabel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.RegisterLabel.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RegisterLabel.Location = new System.Drawing.Point(77, 344);
+            this.RegisterLabel.Name = "RegisterLabel";
+            this.RegisterLabel.Size = new System.Drawing.Size(81, 26);
+            this.RegisterLabel.TabIndex = 6;
+            this.RegisterLabel.Text = "Sign up";
+            this.RegisterLabel.Click += new System.EventHandler(this.RegisterLabel_Click);
+            this.RegisterLabel.MouseEnter += new System.EventHandler(this.RegisterLabel_MouseEnter);
+            this.RegisterLabel.MouseLeave += new System.EventHandler(this.RegisterLabel_MouseLeave);
             // 
             // buttonLogin
             // 
@@ -70,11 +84,11 @@
             this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogin.Font = new System.Drawing.Font("Sketter DEMO", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(216)))), ((int)(((byte)(182)))), ((int)(((byte)(92)))));
-            this.buttonLogin.Location = new System.Drawing.Point(300, 331);
+            this.buttonLogin.Location = new System.Drawing.Point(286, 344);
             this.buttonLogin.Name = "buttonLogin";
-            this.buttonLogin.Size = new System.Drawing.Size(131, 50);
+            this.buttonLogin.Size = new System.Drawing.Size(145, 50);
             this.buttonLogin.TabIndex = 5;
-            this.buttonLogin.Text = "Enter";
+            this.buttonLogin.Text = "Sign in";
             this.buttonLogin.UseVisualStyleBackColor = false;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
             // 
@@ -86,6 +100,8 @@
             this.PassFill.Size = new System.Drawing.Size(349, 50);
             this.PassFill.TabIndex = 4;
             this.PassFill.UseSystemPasswordChar = true;
+            this.PassFill.Enter += new System.EventHandler(this.PassFill_Enter);
+            this.PassFill.Leave += new System.EventHandler(this.PassFill_Leave);
             // 
             // pictureBox2
             // 
@@ -106,6 +122,8 @@
             this.LoginFill.Name = "LoginFill";
             this.LoginFill.Size = new System.Drawing.Size(349, 64);
             this.LoginFill.TabIndex = 2;
+            this.LoginFill.Enter += new System.EventHandler(this.LoginFill_Enter);
+            this.LoginFill.Leave += new System.EventHandler(this.LoginFill_Leave);
             // 
             // pictureBox1
             // 
@@ -168,6 +186,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "LoginForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -190,5 +209,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.TextBox LoginFill;
         private System.Windows.Forms.Button buttonLogin;
+        private System.Windows.Forms.Label RegisterLabel;
     }
 }

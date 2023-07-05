@@ -36,7 +36,7 @@ namespace sqlLessons
 
         private void closeButton_Click(object sender, EventArgs e)
         {
-            Close();
+            Application.Exit();
         }
 
         Point lastPoint;
@@ -211,6 +211,23 @@ namespace sqlLessons
             {
                 return false;
             }
+        }
+
+        private void RegisterLabel_MouseEnter(object sender, EventArgs e)
+        {
+            RegisterLabel.ForeColor = Color.Blue;
+        }
+
+        private void RegisterLabel_MouseLeave(object sender, EventArgs e)
+        {
+            RegisterLabel.ForeColor= Color.Black;
+        }
+
+        private void RegisterLabel_Click(object sender, EventArgs e)
+        {
+            Hide();
+            LoginForm LG = new LoginForm();
+            LG.Show();
         }
     }
 }
