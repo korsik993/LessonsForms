@@ -18,6 +18,8 @@ namespace sqlLessons
                 conn.Open();
         }
 
+        // Davai pozharim Ved`mu na troih
+
         public void closeConnection()
         {
             if (conn.State == System.Data.ConnectionState.Open)
